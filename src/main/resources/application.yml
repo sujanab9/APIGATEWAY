@@ -1,0 +1,37 @@
+server:
+  port: 8083
+  
+spring:
+  application:
+    name: API_GATEWAY
+    
+  cloud:
+    gateway:
+      routes:
+      - id: new-micro-service-id
+        uri:
+          lb://new-micro-service
+        predicates:
+        - path=/sample/**
+        filters:
+        - AuthorizationFilter
+        
+      - id: CITIZEN-SERVICE
+        uri:
+          lb://CITIZEN-SERVICE
+        predicates:
+        - Path=/citizen/**
+        filters:
+        - AuthorizationFilter
+        
+      - id: VACCINATIONCENTER-SERVICE
+        uri:
+          lb://VACCINATIONCENTER-SERVICE
+        predicates:
+        - Path=/vaccinationcenter/**
+        
+      - id: ACTIVITY-SERVICE
+        uri:
+          lb://ACTIVITY-SERVICE
+        predicates:
+        - Path=/activity/**
