@@ -10,6 +10,8 @@ public class ApiGatewayApplication {
 		SpringApplication.run(ApiGatewayApplication.class, args);
 
 		//added new comment
+
+		//added required code 
 	}
 
 }
